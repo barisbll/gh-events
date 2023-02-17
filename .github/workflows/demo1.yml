@@ -2,11 +2,13 @@ name: Events Demo 1
 on: 
   pull_request:
     types: [opened, edited]
-      # we could also add the types like this
-      # - opened
-  # we have to add colon now
-  # even though we don't have an activity in workflow_dispatch
-  workflow_dispatch:
+  push:
+    branches:
+      - "development"
+      - 'dev-*'       # for exp. dev-new, dev-new-new
+      - 'feat/**'     # for exp. feat/BEE-6161, feat/NEW/BEE-6161
+    paths-ignore:
+      - ".github/workflows/*"
 jobs:
   deploy:
     runs-on: ubuntu-latest

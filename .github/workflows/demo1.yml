@@ -1,5 +1,12 @@
 name: Events Demo 1
-on: ...
+on: 
+  pull_request:
+    types: [opened, edited]
+      # we could also add the types like this
+      # - opened
+  # we have to add colon now
+  # even though we don't have an activity in workflow_dispatch
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
